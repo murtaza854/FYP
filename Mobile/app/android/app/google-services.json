@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "158377489983",
+    "project_id": "tezz-94324",
+    "storage_bucket": "tezz-94324.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158377489983:android:5208bc12d62c98d715aa8a",
+        "android_client_info": {
+          "package_name": "com.hexandbracket.tezz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158377489983-4sica4jkhjgik1qv0q5o0c3b5pr20fau.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hexandbracket.tezz",
+            "certificate_hash": "7307a483a33941f2c9debd4efb21feb10df2bc7d"
+          }
+        },
+        {
+          "client_id": "158377489983-bntpg0khkm6cnr7sg644br1gq7ccncnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXs8Gv5bP4DM-0QrdKjQk-_VB1oNnOqfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158377489983-bntpg0khkm6cnr7sg644br1gq7ccncnn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158377489983-0flvi2db8lhqd3vprp9kvapv18ttgedc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "tezz-94324"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

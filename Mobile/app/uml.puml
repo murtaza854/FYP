@@ -1,0 +1,682 @@
+@startuml
+set namespaceSeparator ::
+
+class "app::size_config.dart::SizeConfig" {
+  {static} -MediaQueryData _mediaQueryData
+  {static} +double screenWidth
+  {static} +double screenHeight
+  {static} +double? defaultSize
+  {static} +Orientation? orientation
+  +void init()
+}
+
+"app::size_config.dart::SizeConfig" o-- "flutter::src::widgets::media_query.dart::MediaQueryData"
+"app::size_config.dart::SizeConfig" o-- "flutter::src::widgets::media_query.dart::Orientation"
+
+class "app::firebase_options.dart::DefaultFirebaseOptions" {
+  {static} +FirebaseOptions android
+  {static} +FirebaseOptions ios
+  {static} +FirebaseOptions currentPlatform
+}
+
+"app::firebase_options.dart::DefaultFirebaseOptions" o-- "firebase_core_platform_interface::firebase_core_platform_interface.dart::FirebaseOptions"
+
+class "app::models::user_model.dart::UserModel" {
+  +String firstName
+  +String lastName
+  +String email
+  +String contactNumber
+  +String role
+  +bool isActive
+  +bool accountSetup
+  +List<dynamic> addresses
+  +Map<String, dynamic> toJson()
+  +dynamic getName()
+  +dynamic getFirstName()
+  +dynamic hasPhoneNumber()
+  +dynamic isSetup()
+}
+
+class "app::screens::mapScreen::map_screen.dart::MapScreen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::mapScreen::map_screen.dart::MapScreen"
+
+class "app::screens::mapScreen::components::pickup_location_drawer.dart::PickupLocationDrawer" {
+  +LatLng idleLocation
+  +String currentLocationString
+  +void Function(dynamic) changeCameraPositionIndex
+  +Function changeActiveIndex
+  +Function chosenAddress
+  +Function checkIfAddressIsChosen
+  +State<PickupLocationDrawer> createState()
+}
+
+"app::screens::mapScreen::components::pickup_location_drawer.dart::PickupLocationDrawer" o-- "google_maps_flutter_platform_interface::src::types::location.dart::LatLng"
+"app::screens::mapScreen::components::pickup_location_drawer.dart::PickupLocationDrawer" o-- "null::void Function(dynamic)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::mapScreen::components::pickup_location_drawer.dart::PickupLocationDrawer"
+
+class "app::screens::mapScreen::components::pickup_location_drawer.dart::_PickupLocationDrawerState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::mapScreen::components::pickup_location_drawer.dart::_PickupLocationDrawerState"
+
+class "app::screens::mapScreen::components::body.dart::Body" {
+  +State<Body> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::mapScreen::components::body.dart::Body"
+
+class "app::screens::mapScreen::components::body.dart::_BodyState" {
+  +GoogleMapController mapController
+  +CameraPosition? cameraPosition
+  -MapType _currentMapType
+  -Set<Marker> _markers
+  +LatLng startLocation
+  +LatLng idleLocation
+  +String currentLocationString
+  +List<LatLng> polylineCoordinates
+  +int activeIndex
+  +int ambulanceType
+  +int selectedIndexAddresses
+  +int selectedNearbyHospital
+  +dynamic chosenHospital
+  -void _onMapCreated()
+  +void changeActiveIndex()
+  +void chosenAmbulanceType()
+  +void chosenAddress()
+  +void chosenNearbyHospital()
+  +bool checkIfAddressIsChosen()
+  +bool checkIfAmbulanceTypeChosen()
+  +bool checkIfNearbyHospitalIsChosen()
+  +bool checkIfActiveIndex()
+  -void _onMapTypeButtonPressed()
+  -void _changeCameraPosition()
+  +void changeCameraPositionIndex()
+  +Widget build()
+}
+
+"app::screens::mapScreen::components::body.dart::_BodyState" o-- "google_maps_flutter::google_maps_flutter.dart::GoogleMapController"
+"app::screens::mapScreen::components::body.dart::_BodyState" o-- "google_maps_flutter_platform_interface::src::types::camera.dart::CameraPosition"
+"app::screens::mapScreen::components::body.dart::_BodyState" o-- "google_maps_flutter_platform_interface::src::types::ui.dart::MapType"
+"app::screens::mapScreen::components::body.dart::_BodyState" o-- "google_maps_flutter_platform_interface::src::types::location.dart::LatLng"
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::mapScreen::components::body.dart::_BodyState"
+
+class "app::screens::mapScreen::components::ambulance_type_drawer.dart::AmbulanceTypeDrawer" {
+  +String currentLocationString
+  +Function changeActiveIndex
+  +Function chosenAmbulanceType
+  +Function checkIfAmbulanceTypeChosen
+  +List<dynamic> ambulances
+  +State<AmbulanceTypeDrawer> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::mapScreen::components::ambulance_type_drawer.dart::AmbulanceTypeDrawer"
+
+class "app::screens::mapScreen::components::ambulance_type_drawer.dart::_AmbulanceTypeDrawerState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::mapScreen::components::ambulance_type_drawer.dart::_AmbulanceTypeDrawerState"
+
+class "app::screens::mapScreen::components::nearby_hospital_drawer.dart::NearbyHospitalDrawer" {
+  +LatLng idleLocation
+  +String currentLocationString
+  +int ambulanceType
+  +List<dynamic> ambulances
+  +Function changeActiveIndex
+  +Function chosenNearbyHospital
+  +Function checkIfNearbyHospitalIsChosen
+  +Function checkIfActiveIndex
+  +State<NearbyHospitalDrawer> createState()
+}
+
+"app::screens::mapScreen::components::nearby_hospital_drawer.dart::NearbyHospitalDrawer" o-- "google_maps_flutter_platform_interface::src::types::location.dart::LatLng"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::mapScreen::components::nearby_hospital_drawer.dart::NearbyHospitalDrawer"
+
+class "app::screens::mapScreen::components::nearby_hospital_drawer.dart::_NearbyHospitalDrawerState" {
+  +bool flag
+  +List<dynamic> nearbyHospitals
+  +void setNearbyHospitals()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::mapScreen::components::nearby_hospital_drawer.dart::_NearbyHospitalDrawerState"
+
+class "app::screens::mapScreen::components::tezz_drawer.dart::TezzDrawer" {
+  +LatLng idleLocation
+  +String currentLocationString
+  +int ambulanceType
+  +List<dynamic> ambulances
+  +Function changeActiveIndex
+  +dynamic chosenHospital
+  +State<TezzDrawer> createState()
+}
+
+"app::screens::mapScreen::components::tezz_drawer.dart::TezzDrawer" o-- "google_maps_flutter_platform_interface::src::types::location.dart::LatLng"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::mapScreen::components::tezz_drawer.dart::TezzDrawer"
+
+class "app::screens::mapScreen::components::tezz_drawer.dart::_TezzDrawerState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::mapScreen::components::tezz_drawer.dart::_TezzDrawerState"
+
+class "app::screens::home::components::tablet_home_screen.dart::TabletHomeScreen" {
+  +State<TabletHomeScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::home::components::tablet_home_screen.dart::TabletHomeScreen"
+
+class "app::screens::home::components::tablet_home_screen.dart::_TabletHomeScreenState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::home::components::tablet_home_screen.dart::_TabletHomeScreenState"
+
+class "app::screens::home::components::pickup_form.dart::PickupForm" {
+  +State<PickupForm> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::home::components::pickup_form.dart::PickupForm"
+
+class "app::screens::home::components::pickup_form.dart::_PickupFormState" {
+  -GlobalKey<FormState> _formKey
+  -TextEditingController _pickupLocation
+  +Widget build()
+  +TextFormField pickupLocationTextFormField()
+}
+
+"app::screens::home::components::pickup_form.dart::_PickupFormState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"app::screens::home::components::pickup_form.dart::_PickupFormState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::home::components::pickup_form.dart::_PickupFormState"
+
+class "app::screens::home::components::mobile_home_screen.dart::MobileHomeScreen" {
+  +State<MobileHomeScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::home::components::mobile_home_screen.dart::MobileHomeScreen"
+
+class "app::screens::home::components::mobile_home_screen.dart::_MobileHomeScreenState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::home::components::mobile_home_screen.dart::_MobileHomeScreenState"
+
+class "app::screens::home::home_screen.dart::HomeScreen" {
+  {static} +String routeName
+  +State<HomeScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::home::home_screen.dart::HomeScreen"
+
+class "app::screens::home::home_screen.dart::_HomeScreenState" {
+  -int _selectedIndex
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::home::home_screen.dart::_HomeScreenState"
+
+class "app::screens::splash::components::body.dart::Body" {
+  +State<Body> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::splash::components::body.dart::Body"
+
+class "app::screens::splash::components::body.dart::_BodyState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::splash::components::body.dart::_BodyState"
+
+class "app::screens::splash::splash_screen.dart::SplashScreen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::splash::splash_screen.dart::SplashScreen"
+
+class "app::screens::otp::components::otp_form.dart::OtpForm" {
+  +String phone
+  +State<OtpForm> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::otp::components::otp_form.dart::OtpForm"
+
+class "app::screens::otp::components::otp_form.dart::_OtpFormState" {
+  -GlobalKey<FormState> _formKey
+  +FocusNode pin2FocusNode
+  +FocusNode pin3FocusNode
+  +FocusNode pin4FocusNode
+  +FocusNode pin5FocusNode
+  +FocusNode pin6FocusNode
+  +bool resentOtp
+  +bool otpSent
+  -Timer _timer
+  -int _start
+  -TextEditingController _code1Controller
+  -TextEditingController _code2Controller
+  -TextEditingController _code3Controller
+  -TextEditingController _code4Controller
+  -TextEditingController _code5Controller
+  -TextEditingController _code6Controller
+  +void initState()
+  +void dispose()
+  +void nextField()
+  +void startTimer()
+  +void verifyPhoneNumber()
+  +void verificationCompleted()
+  +void verificationFailed()
+  +void codeSent()
+  +Widget build()
+  +Row buildTimer()
+  +TextFormField otpField()
+}
+
+"app::screens::otp::components::otp_form.dart::_OtpFormState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"app::screens::otp::components::otp_form.dart::_OtpFormState" o-- "flutter::src::widgets::focus_manager.dart::FocusNode"
+"app::screens::otp::components::otp_form.dart::_OtpFormState" o-- "dart::async::Timer"
+"app::screens::otp::components::otp_form.dart::_OtpFormState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::otp::components::otp_form.dart::_OtpFormState"
+
+class "app::screens::otp::components::tablet_otp.dart::TabletOtp" {
+  +State<TabletOtp> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::otp::components::tablet_otp.dart::TabletOtp"
+
+class "app::screens::otp::components::tablet_otp.dart::_TabletOtpState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::otp::components::tablet_otp.dart::_TabletOtpState"
+
+class "app::screens::otp::components::mobile_otp.dart::MobileOtp" {
+  +State<MobileOtp> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::otp::components::mobile_otp.dart::MobileOtp"
+
+class "app::screens::otp::components::mobile_otp.dart::_MobileOtpState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::otp::components::mobile_otp.dart::_MobileOtpState"
+
+class "app::screens::otp::otp_screen.dart::OtpScreen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::otp::otp_screen.dart::OtpScreen"
+
+class "app::screens::signup::signup_screen.dart::SignupScreen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::signup::signup_screen.dart::SignupScreen"
+
+class "app::screens::signup::components::tablet_signup.dart::TabletSignup" {
+  +State<TabletSignup> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::signup::components::tablet_signup.dart::TabletSignup"
+
+class "app::screens::signup::components::tablet_signup.dart::_TabletSignupState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::signup::components::tablet_signup.dart::_TabletSignupState"
+
+class "app::screens::signup::components::signup_form.dart::SignupForm" {
+  +State<SignupForm> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::signup::components::signup_form.dart::SignupForm"
+
+class "app::screens::signup::components::signup_form.dart::_SignupFormState" {
+  -GlobalKey<FormState> _formKey
+  -bool _isObscure_1
+  -bool _isObscure_2
+  -TextEditingController _firstNameController
+  -TextEditingController _lastNameController
+  -TextEditingController _emailController
+  -TextEditingController _passwordController
+  -TextEditingController _confirmPasswordController
+  +Widget build()
+  +dynamic passwordDialog()
+  +TextFormField firstNameTextFormField()
+  +TextFormField lastNameTextFormField()
+  +TextFormField emailTextFormField()
+  +TextFormField passwordTextFormField()
+  +TextFormField confirmPasswordTextFormField()
+}
+
+"app::screens::signup::components::signup_form.dart::_SignupFormState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"app::screens::signup::components::signup_form.dart::_SignupFormState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::signup::components::signup_form.dart::_SignupFormState"
+
+class "app::screens::signup::components::body.dart::Body" {
+  +State<Body> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::signup::components::body.dart::Body"
+
+class "app::screens::signup::components::body.dart::_BodyState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::signup::components::body.dart::_BodyState"
+
+class "app::screens::signup::components::mobile_signup.dart::MobileSignup" {
+  +State<MobileSignup> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::signup::components::mobile_signup.dart::MobileSignup"
+
+class "app::screens::signup::components::mobile_signup.dart::_MobileSignupState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::signup::components::mobile_signup.dart::_MobileSignupState"
+
+class "app::screens::otpPhone::components::tablet_otp_phone.dart::TabletOtpPhone" {
+  +State<TabletOtpPhone> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::otpPhone::components::tablet_otp_phone.dart::TabletOtpPhone"
+
+class "app::screens::otpPhone::components::tablet_otp_phone.dart::_TabletOtpPhoneState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::otpPhone::components::tablet_otp_phone.dart::_TabletOtpPhoneState"
+
+class "app::screens::otpPhone::components::mobile_otp_phone.dart::MobileOtpPhone" {
+  +State<MobileOtpPhone> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::otpPhone::components::mobile_otp_phone.dart::MobileOtpPhone"
+
+class "app::screens::otpPhone::components::mobile_otp_phone.dart::_MobileOtpPhoneState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::otpPhone::components::mobile_otp_phone.dart::_MobileOtpPhoneState"
+
+class "app::screens::otpPhone::components::otp_phone_form.dart::OtpPhoneForm" {
+  +State<OtpPhoneForm> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::otpPhone::components::otp_phone_form.dart::OtpPhoneForm"
+
+class "app::screens::otpPhone::components::otp_phone_form.dart::_OtpPhoneFormState" {
+  -GlobalKey<FormState> _formKey
+  -TextEditingController _phoneController
+  +void initState()
+  +Widget build()
+  +TextFormField phoneNumberTextFormField()
+}
+
+"app::screens::otpPhone::components::otp_phone_form.dart::_OtpPhoneFormState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"app::screens::otpPhone::components::otp_phone_form.dart::_OtpPhoneFormState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::otpPhone::components::otp_phone_form.dart::_OtpPhoneFormState"
+
+class "app::screens::otpPhone::otp_phone_screen.dart::OtpPhoneScreen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::otpPhone::otp_phone_screen.dart::OtpPhoneScreen"
+
+class "app::screens::signin::signin_screen.dart::SigninScreen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::signin::signin_screen.dart::SigninScreen"
+
+class "app::screens::signin::components::tablet_signin.dart::TabletSignin" {
+  +State<TabletSignin> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::signin::components::tablet_signin.dart::TabletSignin"
+
+class "app::screens::signin::components::tablet_signin.dart::_TabletSigninState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::signin::components::tablet_signin.dart::_TabletSigninState"
+
+class "app::screens::signin::components::signin_form.dart::SigninForm" {
+  +State<SigninForm> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::signin::components::signin_form.dart::SigninForm"
+
+class "app::screens::signin::components::signin_form.dart::_SigninFormState" {
+  -GlobalKey<FormState> _formKey
+  -bool _isObscure
+  +String buttonText
+  -TextEditingController _emailController
+  -TextEditingController _passwordController
+  +Widget build()
+  +TextFormField passwordTextFormField()
+  +TextFormField emailTextFormField()
+}
+
+"app::screens::signin::components::signin_form.dart::_SigninFormState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"app::screens::signin::components::signin_form.dart::_SigninFormState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::signin::components::signin_form.dart::_SigninFormState"
+
+class "app::screens::signin::components::body.dart::Body" {
+  +State<Body> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::signin::components::body.dart::Body"
+
+class "app::screens::signin::components::body.dart::_BodyState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::signin::components::body.dart::_BodyState"
+
+class "app::screens::signin::components::mobile_signin.dart::MobileSignin" {
+  +State<MobileSignin> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::signin::components::mobile_signin.dart::MobileSignin"
+
+class "app::screens::signin::components::mobile_signin.dart::_MobileSigninState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::signin::components::mobile_signin.dart::_MobileSigninState"
+
+class "app::screens::onboardingSignup::onboarding_signup_screen.dart::OnboardingSignupScreen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::onboardingSignup::onboarding_signup_screen.dart::OnboardingSignupScreen"
+
+class "app::screens::onboardingSignup::components::mobile_onboarding_signup.dart::MobileOnboardingSignup" {
+  +State<MobileOnboardingSignup> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::onboardingSignup::components::mobile_onboarding_signup.dart::MobileOnboardingSignup"
+
+class "app::screens::onboardingSignup::components::mobile_onboarding_signup.dart::_MobileOnboardingSignupState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::onboardingSignup::components::mobile_onboarding_signup.dart::_MobileOnboardingSignupState"
+
+class "app::screens::onboardingSignup::components::body.dart::Body" {
+  +State<Body> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::onboardingSignup::components::body.dart::Body"
+
+class "app::screens::onboardingSignup::components::body.dart::_BodyState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::onboardingSignup::components::body.dart::_BodyState"
+
+class "app::screens::onboardingSignup::components::tablet_onboarding_signup.dart::TabletOnboardingSignup" {
+  +State<TabletOnboardingSignup> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::onboardingSignup::components::tablet_onboarding_signup.dart::TabletOnboardingSignup"
+
+class "app::screens::onboardingSignup::components::tablet_onboarding_signup.dart::_TabletOnboardingSignupState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::onboardingSignup::components::tablet_onboarding_signup.dart::_TabletOnboardingSignupState"
+
+class "app::screens::onboarding::onboarding_screen.dart::OnboardingScreen" {
+  {static} +String routeName
+  -int _currentPage
+  +List<Map<String, String>> onboardingData
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::onboarding::onboarding_screen.dart::OnboardingScreen"
+
+class "app::screens::onboarding::components::tablet_onboarding.dart::TabletOnboarding" {
+  +int currentPage
+  +List<Map<String, String>> onboardingData
+  +State<TabletOnboarding> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::onboarding::components::tablet_onboarding.dart::TabletOnboarding"
+
+class "app::screens::onboarding::components::tablet_onboarding.dart::_TabletOnboardingState" {
+  +Widget build()
+  +AnimatedContainer buildDot()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::onboarding::components::tablet_onboarding.dart::_TabletOnboardingState"
+
+class "app::screens::onboarding::components::body.dart::Body" {
+  +State<Body> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::onboarding::components::body.dart::Body"
+
+class "app::screens::onboarding::components::body.dart::_BodyState" {
+  -int _currentPage
+  +List<Map<String, String>> onboardingData
+  +Widget build()
+  +AnimatedContainer buildDot()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::onboarding::components::body.dart::_BodyState"
+
+class "app::screens::onboarding::components::onboarding_content.dart::OnboardingContent" {
+  +String red
+  +String bold
+  +String text
+  +String bold2
+  +String text2
+  +String image
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::onboarding::components::onboarding_content.dart::OnboardingContent"
+
+class "app::screens::onboarding::components::mobile_onboarding.dart::MobileOnboarding" {
+  +int currentPage
+  +List<Map<String, String>> onboardingData
+  +State<MobileOnboarding> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::screens::onboarding::components::mobile_onboarding.dart::MobileOnboarding"
+
+class "app::screens::onboarding::components::mobile_onboarding.dart::_MobileOnboardingState" {
+  +Widget build()
+  +AnimatedContainer buildDot()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::screens::onboarding::components::mobile_onboarding.dart::_MobileOnboardingState"
+
+class "app::screens::onboarding::components::onboarding_button.dart::OnboardingButton" {
+  +String text
+  +void Function() press
+  +Widget build()
+}
+
+"app::screens::onboarding::components::onboarding_button.dart::OnboardingButton" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::screens::onboarding::components::onboarding_button.dart::OnboardingButton"
+
+class "app::main.dart::MyApp" {
+  +State<MyApp> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "app::main.dart::MyApp"
+
+class "app::main.dart::_MyAppState" {
+  +Widget build()
+  +void getLoggedInUser()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "app::main.dart::_MyAppState"
+
+class "app::components::title_custom.dart::TitleCustom" {
+  +String text
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::components::title_custom.dart::TitleCustom"
+
+class "app::components::color_icon_button.dart::ColorIconButton" {
+  +bool iconFirst
+  +IconData setIcon
+  +Color color
+  +String topText
+  +String bottomText
+  +Widget build()
+}
+
+"app::components::color_icon_button.dart::ColorIconButton" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"app::components::color_icon_button.dart::ColorIconButton" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::components::color_icon_button.dart::ColorIconButton"
+
+class "app::components::default_button.dart::DefaultButton" {
+  +String text
+  +void Function() press
+  +Widget build()
+}
+
+"app::components::default_button.dart::DefaultButton" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::components::default_button.dart::DefaultButton"
+
+class "app::components::social_button.dart::SocialButton" {
+  +String svg
+  +String text
+  +void Function() press
+  +Widget build()
+}
+
+"app::components::social_button.dart::SocialButton" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::components::social_button.dart::SocialButton"
+
+class "app::responsive.dart::Responsive" {
+  +Widget mobile
+  +Widget tablet
+  {static} +bool isMobile()
+  {static} +bool isTablet()
+  +Widget build()
+}
+
+"app::responsive.dart::Responsive" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "app::responsive.dart::Responsive"
+
+
+@enduml
