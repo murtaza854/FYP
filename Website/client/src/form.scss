@@ -1,0 +1,279 @@
+.form-cont {
+    position: relative;
+}
+.form-style {
+    padding: 0rem 3rem 2.5rem;
+    .form-heading {
+        margin-bottom: 1.5rem;
+    }
+    // .form-group {
+    //     padding: 0 3rem;
+    // }
+    .form-group-left {
+        padding-left: 3rem;
+    }
+    .form-group-right {
+        padding-right: 3rem;
+    }
+    .dropdown-item.active {
+        background-color: #f6d33e;
+    }
+    .dropdown-item {
+        &:active {
+            background-color: #f6d33e;
+        }
+    }
+    .form-check-input:checked {
+        background-color: #f6d33e;
+        border-color: #f6d33e;
+    }
+    .form-check-input:focus {
+        border-color: white;
+        box-shadow: none;
+    }
+    .form-label {
+        width: 100%;
+    }
+    .form-control {
+        height: auto !important;
+    }
+    .form-label,
+    .MuiFormControlLabel-label {
+        font-size: 1.2rem;
+    }
+    .error-text,
+    .show-password {
+        margin-top: 0.188rem;
+        font-size: 0.8rem;
+        color: rgb(180, 0, 0);
+    }
+    .show-password {
+        color: black;
+        cursor: pointer;
+        text-align: right;
+    }
+    .MuiToggleButtonGroup-root {
+        border: 0px solid #f6d33e;
+        border-radius: 10px;
+    }
+    .MuiToggleButton-root.Mui-selected:hover {
+        background-color: rgba($color: #f6d33e, $alpha: 0.5);
+    }
+    .MuiToggleButton-root.Mui-selected {
+        color: rgba($color: #000000, $alpha: 0.54);
+        background-color: rgba($color: #f6d33e, $alpha: 0.5);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .last-toggle {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .first-toggle {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .last-toggle.Mui-selected {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .square-toggle.Mui-selected {
+        border-radius: 0;
+    }
+    .MuiToggleButton-root:hover {
+        background-color: rgba($color: #f6d33e, $alpha: 0.05);
+    }
+    .MuiToggleButton-sizeSmall {
+        border: 2px solid #f6d33e;
+        width: 3rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+        background-color: white;
+        border: 2px solid #f6d33e;
+        padding: 0.6rem 0.75rem 0.6rem;
+        border-radius: 10px;
+        font-size: 1rem;
+        &:focus {
+            box-shadow: none;
+            background-color: white;
+            border: 2px solid #f6d33e;
+        }
+    }
+    .input-group {
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        select {
+            border-right: 0;
+            &:focus {
+                border-right: 0;
+            }
+        }
+        .input-group-text {
+            font-size: 1.6rem;
+            background-color: white;
+            border: 2px solid #f6d33e;
+            border-radius: 10px;
+            border-left: 0;
+            .icon {
+                cursor: pointer;
+            }
+        }
+    }
+    textarea {
+        width: 100%;
+        resize: none;
+        &:focus {
+            outline: none !important;
+        }
+    }
+    .rbt-aux {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .btn {
+        padding: 0.625rem 0;
+        background-color: #f6d33e !important;
+        color: white;
+        cursor: pointer;
+        width: 12.5rem;
+        text-align: center;
+        font-weight: 400;
+        font-size: 1.4rem;
+        border: 1px solid #f6d33e !important;
+        text-transform: uppercase;
+        border-radius: 30px;
+        transition: ease-in-out 0.3s;
+        margin: 0 1rem;
+        box-shadow: none;
+        &:hover {
+            background-color: white !important;
+            color: #f6d33e;
+            border: 1px solid #f6d33e !important;
+        }
+        &:active {
+            background-color: #f5d9aa !important;
+            color: white;
+            box-shadow: none;
+        }
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    .border-radius-btn {
+        border-radius: 15px;
+    }
+    .horizontal-center-margin {
+        margin-top: 1.875rem;
+        margin-bottom: 0.625rem;
+    }
+    input[type="checkbox"] {
+        border-radius: 100px;
+        border: 1px solid #f6d33e !important;
+        width: 1.2em;
+        height: 1.2em;
+    }
+}
+
+// X-Large devices (large desktops, less than 1400px)
+@media (max-width: 87.49875em) {
+    .form-style {
+        padding: 0 0 2.5rem;
+        .form-label,
+        .MuiFormControlLabel-label {
+            font-size: 1rem;
+        }
+        .form-group-left {
+            padding-left: 2rem;
+        }
+        .form-group-right {
+            padding-right: 2rem;
+        }
+        .btn {
+            font-size: 1.33rem;
+        }
+    }
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 74.99875em) {
+    .form-style {
+        // padding: 5rem 2rem 2.5rem;
+        .form-group-left {
+            padding-left: 1rem;
+        }
+        .form-group-right {
+            padding-right: 1rem;
+        }
+        .btn {
+            width: 12rem;
+            font-size: 1.26rem;
+        }
+        .form-group {
+            padding: 0 1rem;
+        }
+    }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 61.99875em) {
+    .form-style {
+        // padding: 3rem 2rem 2.5rem;
+        .btn {
+            width: 10rem;
+            font-size: 1.19rem;
+        }
+        .input-form-group {
+            width: 50%;
+        }
+        .checkbox-form-group {
+            width: 70%;
+        }
+        .form-group {
+            padding: 0 1rem;
+        }
+    }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 47.99875em) {
+    .form-style {
+        .btn {
+            width: 9.5rem;
+            font-size: 1.12rem;
+        }
+        .input-form-group,
+        .checkbox-form-group {
+            width: 100%;
+        }
+    }
+}
+
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 35.99875em) {
+    .form-style {
+        // padding-right: calc(var(--bs-gutter-x) * 0.5);
+        // padding-left: calc(var(--bs-gutter-x) * 0.5);
+        .form-group-left {
+            padding-left: 1rem;
+        }
+        .form-group-right {
+            padding-right: 1rem;
+        }
+        padding: 0 1rem 2.5rem;
+        .btn {
+            font-size: 1.05rem;
+        }
+    }
+}

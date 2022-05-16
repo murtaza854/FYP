@@ -1,0 +1,1 @@
+export { default as AmbulanceTable } from './ambulanceTable/AmbulanceTable';

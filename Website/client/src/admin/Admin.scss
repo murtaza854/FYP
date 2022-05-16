@@ -1,0 +1,26 @@
+.search-bar-toolbar {
+    padding-right: 2rem !important;
+    width: 20rem !important;
+    display: flex;
+    #standard-basic {
+        width: 16rem !important;
+    }
+}
+.MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows {
+    margin-bottom: 0 !important;
+}
+
+.admin-table-image {
+    width: 10rem;
+    padding: 0.5rem;
+}
+
+.admin-delete-image {
+    position: absolute !important;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.line-chart-container {
+    width: 40rem;
+}

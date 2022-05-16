@@ -1,0 +1,113 @@
+.section2 {
+    .tezz-logo {
+        width: 3rem;
+        margin-bottom: 1rem;
+    }
+    .chat-bubbles {
+        width: 80%;
+    }
+    .chat-screen {
+        width: 140%;
+    }
+    h1 {
+        font-size: 4rem;
+        span {
+            // background: #39b54a;
+            // background: -webkit-linear-gradient(to right, #39b54a 0%, #00a99d 100%);
+            // background: -moz-linear-gradient(to right, #39b54a 0%, #00a99d 100%);
+            // background: linear-gradient(to right, #39b54a 0%, #00a99d 100%);
+            background: #004685;
+            background: -webkit-linear-gradient(to right, #004685 0%, #0074B5 100%);
+            background: -moz-linear-gradient(to right, #004685 0%, #0074B5 100%);
+            background: linear-gradient(to right, #004685 0%, #0074B5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+    p {
+        font-size: 1.5rem;
+        color: black;
+    }
+}
+
+// Devices (less than 1700px)
+@media (max-width: 106.1875em) {
+}
+
+// Devices (less than 1600px)
+@media (max-width: 99.9375em) {
+}
+
+// Devices (less than 1500px)
+@media (max-width: 93.6875em) {
+}
+
+// X-Large devices (large desktops, less than 1400px)
+@media (max-width: 87.49875em) {
+}
+
+// Devices (less than 1300px)
+@media (max-width: 81.1875em) {
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 74.99875em) {
+    .section2 {
+        .chat-bubbles {
+            width: 100%;
+        }
+        .chat-screen {
+            width: 160%;
+        }
+        h1 {
+            font-size: 3.5rem;
+        }
+        p {
+            font-size: 1.31rem;
+            color: black;
+        }
+    }
+}
+
+// Devices (less than 1100px)
+@media (max-width: 68.75em) {
+    .section2 {
+        min-height: 100vh;
+        position: relative;
+        text-align: center;
+        .col-full {
+            width: 100%;
+            padding-left: 1.5rem;
+            padding-right: 2rem;
+        }
+        .section2-center {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 61.99875em) {
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 47.99875em) {
+    .section2 {
+        h1 {
+            font-size: 2.9rem;
+        }
+        p {
+            font-size: 1.08rem;
+            color: black;
+        }
+    }
+}
+
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 35.99875em) {
+}
+
+// XX-Large devices (larger desktops)
+// No media query since the xxl breakpoint has no upper bound on its width

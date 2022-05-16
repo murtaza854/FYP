@@ -1,0 +1,251 @@
+@import "../../../../global.scss";
+
+body {
+    overflow-x: hidden !important;
+}
+
+.section1 {
+    color: white;
+    .container {
+        position: relative;
+    }
+    .section1-bg {
+        position: absolute;
+        // width: 119rem;
+        top: -17rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .row {
+        position: relative;
+    }
+    .logo {
+        width: 8rem;
+    }
+    .mobile-cont {
+        position: relative;
+        .mobile {
+            width: 94rem;
+            position: relative;
+            top: -11rem;
+            right: 30rem;
+        }
+    }
+    h1 {
+        font-size: 4.3rem;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+    p {
+        font-size: 3.1rem;
+        font-weight: 300;
+    }
+}
+
+// Devices (less than 1700px)
+@media (max-width: 106.1875em) {
+    .section1 {
+        .section1-bg {
+            top: -18rem;
+        }
+        .mobile-cont {
+            .mobile {
+                width: 95rem;
+                top: -10rem;
+                right: 33rem;
+            }
+        }
+    }
+}
+
+// Devices (less than 1600px)
+@media (max-width: 99.9375em) {
+}
+
+// Devices (less than 1500px)
+@media (max-width: 93.6875em) {
+    .section1 {
+        .section1-bg {
+            top: -20rem;
+        }
+        .mobile-cont {
+            .mobile {
+                width: 90rem;
+                right: 29rem;
+            }
+        }
+        h1 {
+            font-size: 3.5rem;
+        }
+        p {
+            font-size: 2.6rem;
+        }
+    }
+    // .col-4 {
+    //     flex: 0 0 auto;
+    //     width: 27.333%;
+    // }
+    .col-lg-7 {
+        width: 50%;
+    }
+}
+
+// X-Large devices (large desktops, less than 1400px)
+@media (max-width: 87.49875em) {
+    .section1 {
+        .mobile-cont {
+            .mobile {
+                width: 86rem;
+                right: 34rem;
+            }
+        }
+        .col-lg-7 {
+            width: 58.33333%;
+        }
+    }
+}
+
+// Devices (less than 1300px)
+@media (max-width: 81.1875em) {
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 74.99875em) {
+    .section1 {
+        .section1-bg {
+            top: -22rem;
+            left: 58%;
+            transform: translateX(-50%);
+        }
+        .mobile-cont {
+            .mobile {
+                width: 79rem;
+                right: 31rem;
+            }
+        }
+        h1 {
+            font-size: 3.1rem;
+        }
+        p {
+            font-size: 2.3rem;
+        }
+    }
+}
+
+// Devices (less than 1100px)
+@media (max-width: 68.75em) {
+    .hide-1100, .hide-1100-pe {
+        display: none;
+    }
+    .unhide-1100 {
+        display: block;
+    }
+    .section1-main {
+        text-align: center;
+        .section1 {
+            color: black;
+            position: relative;
+            .margin-global-top-2 {
+                margin-top: 5rem;
+            }
+            overflow-x: hidden;
+            background: rgb(0, 169, 157);
+            background: linear-gradient(90deg, rgba(0, 169, 157, 1) 0%, rgba(57, 181, 74, 1) 100%);
+            // background: #004685;
+            // background: -webkit-linear-gradient(to right, #004685 0%, #0074B5 100%);
+            // background: -moz-linear-gradient(to right, #004685 0%, #0074B5 100%);
+            // background: linear-gradient(to right, #004685 0%, #0074B5 100%);
+            background: rgb(0,70,133);
+background: linear-gradient(0deg, rgba(0,70,133,1) 0%, rgba(0,116,181,1) 100%);
+            height: 100vh;
+            .section1-bg {
+                display: none;
+            }
+            .col-4 {
+                width: 44.33333%;
+            }
+        }
+        .logo {
+            width: 15rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        h1 {
+            font-size: 3.6rem;
+        }
+        p {
+            font-size: 2.8rem;
+        }
+        .col-lg-7 {
+            width: 100%;
+            .col-4 {
+                width: 24.33333%;
+            }
+            .justify-content-start {
+                justify-content: center !important;
+            }
+        }
+    }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 61.99875em) {
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 47.99875em) {
+    .section1-main {
+        text-align: center;
+        .section1 {
+            color: black;
+            position: relative;
+            .margin-global-top-2 {
+                margin-top: 5rem;
+            }
+            overflow-x: hidden;
+            background: rgb(0, 169, 157);
+            background: linear-gradient(90deg, rgba(0, 169, 157, 1) 0%, rgba(57, 181, 74, 1) 100%);
+            height: 100vh;
+            .section1-bg {
+                display: none;
+            }
+            .col-4 {
+                width: 44.33333%;
+            }
+        }
+        .logo {
+            width: 15rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        h1 {
+            font-size: 2.6rem;
+        }
+        p {
+            font-size: 1.8rem;
+        }
+        .col-lg-7 {
+            .col-4 {
+                // width: 35.33333% !important;
+            }
+        }
+    }
+}
+
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 35.99875em) {
+    .section1-main {
+        .col-lg-7 {
+            .col-4 {
+                width: 40.33333% !important;
+            }
+        }
+    }
+}
+
+// XX-Large devices (larger desktops)
+// No media query since the xxl breakpoint has no upper bound on its width

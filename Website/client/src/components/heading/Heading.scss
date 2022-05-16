@@ -1,0 +1,84 @@
+.heading {
+    img {
+        width: 3rem;
+    }
+    width: 43rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    h1 {
+        width: fit-content;
+        font-size: 4rem;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        span {
+            background: #004685;
+            background: -webkit-linear-gradient(to right, #004685 0%, #0074B5 100%);
+            background: -moz-linear-gradient(to right, #004685 0%, #0074B5 100%);
+            background: linear-gradient(to right, #004685 0%, #0074B5 100%);
+            // background: -webkit-linear-gradient(to right, #0074B5 0%, #004685 100%);
+            // background: -moz-linear-gradient(to right, #0074B5 0%, #004685 100%);
+            // background: linear-gradient(to right, #0074B5 0%, #004685 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+// Devices (less than 1700px)
+@media (max-width: 106.1875em) {
+}
+
+// Devices (less than 1600px)
+@media (max-width: 99.9375em) {
+}
+
+// Devices (less than 1500px)
+@media (max-width: 93.6875em) {
+}
+
+// X-Large devices (large desktops, less than 1400px)
+@media (max-width: 87.49875em) {
+}
+
+// Devices (less than 1300px)
+@media (max-width: 81.1875em) {
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 74.99875em) {
+    .heading {
+        h1 {
+            font-size: 3.5rem;
+        }
+    }
+}
+
+// Devices (less than 1100px)
+@media (max-width: 68.75em) {
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 61.99875em) {
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 47.99875em) {
+    .heading {
+        width: fit-content;
+        padding: 0 2rem;
+        h1 {
+            width: fit-content;
+            text-align: center;
+            font-size: 2.9rem;
+        }
+    }
+}
+
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 35.99875em) {
+}
+
+// XX-Large devices (larger desktops)
+// No media query since the xxl breakpoint has no upper bound on its width
